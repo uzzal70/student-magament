@@ -400,6 +400,44 @@ select::placeholder {
   color: var(--gray-700);
 }
 
+.post-form {
+  /* background-color: var(--gray-700); */
+  /* height:40px; */
+display: flex;
+justify-content: space-between;
+gap: 20px;
+margin-bottom: 20px;
+}
+.post-form title{
+  background-color: #fff;
+  height:40px;
+width: 300px;
+color: #000000;
+
+}
+.post-form .input-1 {
+  background-color:var(--back-shadow-light);
+  height:40px;
+width: 50%;
+border-radius: 20px;
+padding: 5px 15px;
+}
+.post-form .input-2 {
+  background-color:var(--back-shadow-light);
+  height:40px;
+width: 100%;
+border-radius: 20px;
+padding: 5px 15px;
+}
+.post-form button{
+  background-color: var(--gray-700);
+  height:40px;
+width: 20%;
+border-radius: 20px;
+color:#fff;
+
+}
+
 .main {
   width: calc(100% - var(--side-width));
   height: calc(100% - var(--head-height));

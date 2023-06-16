@@ -23,11 +23,9 @@ const App = () => {
 	
     let isLocalAuthenticated = localStorage.getItem("isAuthenticated");
     setLoginData(login);
-    console.log(login?.status);
     if (login?.email) setIsAuthenticated(JSON.parse(login));
     else setIsAuthenticated(true);
   }, []);
-  console.log(login);
   return (
     <div>
       {login?.status === "success" ? (

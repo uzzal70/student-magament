@@ -42,7 +42,6 @@ export const GlobalProvider = ({ children }) => {
           
           // localStorage.setItem("user-info", data);
 
-          console.log(data)
           const destination =  "/dashboard";
           navigate(destination);
         } else {

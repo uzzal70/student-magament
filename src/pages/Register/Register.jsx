@@ -19,7 +19,8 @@ const Register = () => {
     e.preventDefault();
 
     fetch(
-      "https://alumni-portal-production-ceef.up.railway.app/alumni/registration",
+      "https://alumni-portal-production.up.railway.app/alumni/registration",
+      // "https://alumni-portal-production-ceef.up.railway.app/alumni/registration",
       {
         method: "POST",
         headers: {
