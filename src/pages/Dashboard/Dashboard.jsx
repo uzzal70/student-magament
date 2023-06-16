@@ -159,9 +159,9 @@ const Dashboard = () => {
       });
   }, [refetch]);
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value, Name:login?.Name });
   };
-
+console.log(formData)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -247,7 +247,7 @@ const Dashboard = () => {
             </p>
           </div>
           <p>
-            <strong>Name:</strong> {login?.Name}
+            <strong>Name:</strong> {data?.Name}
           </p>
         </div>
       </div>
