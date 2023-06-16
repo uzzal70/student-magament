@@ -7,7 +7,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import GlobalContext from "../../components/Context/GloablContext";
 
 const Login = () => {
-  const { isAuthenticated, setIsAuthenticated, loginUser } =
+  const { isAuthenticated, setIsAuthenticated, loginUser,error } =
     useContext(GlobalContext);
     const location= useLocation()
 
@@ -28,6 +28,7 @@ const Login = () => {
     e.preventDefault();
    
     loginUser(user?.username, user?.password, navigate, location);
+    
 
     // setIsAuthenticated(true);
     // localStorage.setItem("isAuthenticated", true);
@@ -73,6 +74,7 @@ const Login = () => {
                   placeholder="Password"
                 />
               </div>
+                <h3 style={{color:"red"}}>{error||""}</h3>
               <div className="login-left-form-group">
                 <Link to="/forgot">Forgot Password?</Link>
                 <Button type="submit" text="Login" color="brown" />

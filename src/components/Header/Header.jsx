@@ -2,14 +2,17 @@ import React, { useContext, useState } from "react";
 import GlobalContext from "../Context/GloablContext";
 import "./header.css";
 import HeaderUserMenu from "./HeaderUserMenu";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate=useNavigate()
   const { openNav, setOpenNav, setIsAuthenticated, user, breakpoint } =
     useContext(GlobalContext);
   const [openUserMenu, setOpenUserMenu] = useState(false);
   const logoutUser = () => {
     setIsAuthenticated(false);
-    localStorage.setItem("isAuthenticated", false);
+    localStorage.removeItem("user-info");
+    navigate("/")
   };
   return (
     <section
@@ -37,7 +40,7 @@ const Header = () => {
         </div>
         <div className="header-right" onClick={() => setOpenUserMenu(true)}>
           <div className="header-right-user">
-            {/* <img src={user.avatar} alt={user.name} /> */}
+            <img src="https://static.vecteezy.com/system/resources/previews/015/119/100/original/businessman-icon-man-icon-design-illustration-free-png.png" style={{width:"20px", height:"20px"}}alt="A" />
           </div>
         </div>
       </header>

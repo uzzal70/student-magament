@@ -39,6 +39,8 @@ export const GlobalProvider = ({ children }) => {
         if (data.status === "success") {
           setIsLoading(true);
           localStorage.setItem("user-info", JSON.stringify(data));
+          
+          // localStorage.setItem("user-info", data);
 
           console.log(data)
           const destination =  "/dashboard";

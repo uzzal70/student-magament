@@ -12,56 +12,63 @@ import GlobalContext from "./components/Context/GloablContext";
 import Header from "./components/Header/Header";
 
 const App = () => {
-	AOS.init();
-	const location = useLocation();
-	const { openNav, setOpenNav, setIsAuthenticated, breakpoint } =
-		useContext(GlobalContext);
-		let [loginData, setLoginData]=useState();
-	useEffect(() => {
-		let isLocalAuthenticated = localStorage.getItem("isAuthenticated");
-		let login = localStorage.getItem("user-info");
-		setLoginData(login)
-		console.log(login?.status)
-		if (login?.email)
-			setIsAuthenticated(JSON.parse(login));
-		else setIsAuthenticated(true);
-	}, [ ]);
-	console.log(loginData?.status)
-	return (
-		<>
-		{loginData?.status==="success"?<><Navigation />
-					<Header />
-					<main
-						className="main"
-						style={{
-							left: breakpoint("mobile")
-								? 0
-								: openNav
-								? "var(--side-width)"
-								: "7.5rem",
-							width: breakpoint("mobile")
-								? "100vw"
-								: openNav
-								? "calc(100vw - var(--side-width))"
-								: "calc(100vw - 7.5rem)",
-						}}
-					>
-						<Routes>
-							<Route
-								path="/dashboard"
-								element={
-									<PrivateRoute>
-										<Dashboard />
-									</PrivateRoute>
-								}
-							/>
-						</Routes>
-					</main></>:<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/register" element={<Register />} />
-				</Routes>}
-			{/* {location.pathname !== "/" &&
+  AOS.init();
+  const location = useLocation();
+  const { openNav, setOpenNav, setIsAuthenticated, breakpoint } =
+    useContext(GlobalContext);
+  let [loginData, setLoginData] = useState();
+  const savedData = localStorage.getItem("user-info");
+  let login = JSON.parse(savedData);
+  useEffect(() => {
+	
+    let isLocalAuthenticated = localStorage.getItem("isAuthenticated");
+    setLoginData(login);
+    console.log(login?.status);
+    if (login?.email) setIsAuthenticated(JSON.parse(login));
+    else setIsAuthenticated(true);
+  }, []);
+  console.log(login);
+  return (
+    <div>
+      {login?.status === "success" ? (
+        <div>
+          <Navigation />
+          <Header />
+          <main
+            className="main"
+            style={{
+              left: breakpoint("mobile")
+                ? 0
+                : openNav
+                ? "var(--side-width)"
+                : "7.5rem",
+              width: breakpoint("mobile")
+                ? "100vw"
+                : openNav
+                ? "calc(100vw - var(--side-width))"
+                : "calc(100vw - 7.5rem)",
+            }}
+          >
+            <Routes>
+              <Route
+                path="/dashboard"
+                element={
+                  <PrivateRoute>
+                    <Dashboard />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+          </main>
+        </div>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      )}
+      {/* {location.pathname !== "/" &&
 			location.pathname !== "/login" &&
 			location.pathname !== "/register" ? (
 				<>
@@ -101,11 +108,8 @@ const App = () => {
 					<Route path="/register" element={<Register />} />
 				</Routes>
 			)} */}
-			
-
-
-		</>
-	);
+    </div>
+  );
 };
 
 export default App;
